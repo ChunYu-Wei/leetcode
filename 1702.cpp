@@ -20,14 +20,28 @@ int main(void){
 			while(idx < s.size() && s[idx] != '0'){
 				idx++;
 			}
+			
 			if(idx != s.size()) {
-				s[idx] = '1';
-				s[a] = '1';
-				s[a+1] = '0';	
+				// idx : first zero
+				int zero_cnt = 1;
+
+				while(s[idx+zero_cnt] == '0'){
+					zero_cnt++;
+				}
+				cout << "zero_cnt: " << zero_cnt << "  idx:" << idx << endl;
+				for(int i = 0;i < zero_cnt;i++){
+					s[a+i] = '1';
+				}
+				s[a+zero_cnt] = '0';
+				for(int i = 0;i < zero_cnt;i++){
+					s[idx+i] = '1';
+				}
 			}
+
 			a = idx;
 		}
-	
+		else a++;
+		cout << "s:" << s  << "  a:" << a << endl;		
 	}
 
 	cout << s << endl;
