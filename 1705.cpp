@@ -52,7 +52,7 @@ int main(){
 		
 		//update
 		status.erase(status.begin());
-		max_day --;
+		if(max_day > 0) max_day --;
 		dayth++;
 	}
 	while(max_day > 0 || dayth < days.size());
