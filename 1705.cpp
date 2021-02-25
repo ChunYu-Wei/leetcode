@@ -34,12 +34,14 @@ int main(){
 	do{
 
 
-		if(dayth < days.size()){
+		if(dayth < days.size() && days[dayth]){
 			status[days[dayth]-1] += apples[dayth];
 			if(days[dayth]-1 > max_day) max_day = days[dayth]-1;
 		}	
 
 		//search apple
+	
+	/*	
 		bool find = 0;
 
 		for(int i = 0;i <= max_day;i++){
@@ -51,17 +53,30 @@ int main(){
 		}
 
 		if(find) count++;
-/*		
-	   	cout << "------------" << endl;
-		for(int i = 0;i <= max_day;i++){
-			cout << status[i];
-		}
+	*/
+
+		/*
+		cout << "---------" << endl;
+		for(int i = 0;i <= max_day;i++) cout << status[i];
 		cout << endl;
-		cout << "max_day: " << max_day << "  count: " << count  << endl;
-*/
+		cout << "count: " << count << "   dayth: " << dayth << endl;
+		 */
+		
+
+		if(max_day > 0){
+			int idx = 0;
+			while(idx <= max_day && status[idx] == 0) idx++;
+			count += (status[idx] > max_day+1)? max_day+1: status[idx] ;
+			for(int i = 0;i <= max_day;i++){
+				status.erase(status.begin());
+			}
+			max_day -= idx;
+		}
+		else if(max_day == 0){
+			count += (status[0] == 0)? 0:1;
+			max_day--;
+		}	
 		//update
-		status.erase(status.begin());
-		if(max_day >= 0) max_day --;
 		dayth++;
 	}
 	while(max_day >= 0 || dayth < days.size());
