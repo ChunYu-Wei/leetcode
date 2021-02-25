@@ -1,5 +1,5 @@
 #include<iostream>
-//#include<string>
+#include<string>
 
 using namespace std;
 
@@ -13,6 +13,7 @@ int main(void){
 	while(a+1 < s.length()){
 		if(s[a] == '0' && s[a+1] == '0'){
 			s[a] = '1';
+			a++;
 		}
 		else if(s[a] == '0' && s[a+1] == '1'){
 			int idx = a+2;
@@ -24,8 +25,8 @@ int main(void){
 				s[a] = '1';
 				s[a+1] = '0';	
 			}
+			a = idx;
 		}
-		a++;
 	
 	}
 
