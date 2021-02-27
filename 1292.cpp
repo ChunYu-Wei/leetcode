@@ -11,7 +11,7 @@ bool func(const int& grid, vector<vector<int> >& mat, vector<vector<int> >& pref
 			else if(i == grid-1) sum = prefix_sum[i][j] - prefix_sum[i][j-grid]	;
 			else if(j == grid-1) sum = prefix_sum[i][j] - prefix_sum[i-grid][j]	;
 			else sum = prefix_sum[i][j] - prefix_sum[i-grid][j] - prefix_sum[i][j-grid] + prefix_sum[i-grid][j-grid];
-			if(sum < threshold) return true;				
+			if(sum <= threshold) return true;				
 		}
 	}
 	return false;
