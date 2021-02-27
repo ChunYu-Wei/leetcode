@@ -41,7 +41,7 @@ int main(){
 	while(1){	
 		num = cal(first,len);
 		if(num > high) break;
-		else ans.push_back(num);
+		else if(num >= low) ans.push_back(num);
 
 		if(num%10 == 9){
 			first = 1;
